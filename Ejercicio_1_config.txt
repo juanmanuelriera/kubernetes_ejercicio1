@@ -1,0 +1,43 @@
+Se Instala KIND en Linux:
+-------------------------
+
+> curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amb64
+> chmod +x ./kind
+> sudo mv ./kind /bin/kind
+
+
+Para crear el cluster haremos:
+------------------------------
+
+> kind create cluster --name micluster
+
+
+Contenido del fichero config.yaml
+---------------------------------
+
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+	- role: control-plane
+	- role: worker
+	- role: worker
+
+
+Comprobaciones:
+---------------
+
+Para comprobar que el cluster está creado:
+
+> kind get clusters
+
+Para ver los nodos que se han creado:
+
+> kind get nodes
+
+Para ver la imagen dpcker descargada:
+
+> docker images
+
+Para listar los contenedores:
+
+> docker ps
